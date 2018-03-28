@@ -3,42 +3,70 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
-
-import java.util.Scanner;
+package reverse.fibonacci;
 
 /**
  *
  * @author Praktikan
  */
-public class JavaApplication1 {
+import javax.swing.JOptionPane;
+public class ReverseFibonacci {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner s = new Scanner(System.in);
-       System.out.print("Enter the value of n: ");
-       int n = s.nextInt();
-       fibonacci(n);
-   }
+        int i,j,temp;
+int input = Integer.parseInt(JOptionPane.showInputDialog("masukkan integer positif : "));
+int SIZE = (input*2) +1;
+int [] array= new int [SIZE];
+int sum=2; 
+int median;
 
-   public static void fibonacci(int n) {
-       if (n == 0) {
-           System.out.println("0");
-       } else if (n == 1) {
-           System.out.println("0 1");
-       } else {
-           System.out.print("0 1 ");
-           int a = 0;
-           int b = 1;
-           for (int i = 1; i < n; i++) {
-               int nextNumber = a + b;
-               System.out.print(nextNumber + " ");
-               a = b;
-               b = nextNumber;
-           }
-       }
-   }
+
+array [0] = 0;
+array [1] = 1;
+
+
+for (i=2; i<array.length; i++) {
+array [i] = array [i-1] + array [i-2];
+}
+
+
+if (SIZE % 2 == 0) {
+median = array [(SIZE/2)-1] + array [SIZE/2];
+}
+else {
+median = array [SIZE/2];
+}
+
+
+for (i=2; i<array.length; i++) {
+sum = sum + array [i] ;
+}
+
+int mean = sum/SIZE;
+
+
+for (i=0; i<array.length-1; i++) {
+for (j=0; j<array.length-1; j++) {
+if (array [j]< array [j+1] ) {
+temp = array [j];
+array [j] = array [j+1];
+array [j+1] = temp;
+}
+}
+}
+
+System.out.println("deret : ");
+for (i=0; i<array.length; i++) {
+System.out.print (array [i]+ " ");
+}
+System.out.println ("");
+
+System.out.println ("mean : " + mean);
+System.out.println ("median: "+ median);
+
+}
 }
