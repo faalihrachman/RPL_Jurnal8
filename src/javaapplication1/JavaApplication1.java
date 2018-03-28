@@ -13,32 +13,19 @@ import java.util.Scanner;
  */
 public class JavaApplication1 {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Scanner s = new Scanner(System.in);
-       System.out.print("Enter the value of n: ");
-       int n = s.nextInt();
-       fibonacci(n);
-   }
-
-   public static void fibonacci(int n) {
-       if (n == 0) {
-           System.out.println("0");
-       } else if (n == 1) {
-           System.out.println("0 1");
-       } else {
-           System.out.print("0 1 ");
-           int a = 0;
-           int b = 1;
-           for (int i = 1; i < n; i++) {
-               int nextNumber = a + b;
-               System.out.print(nextNumber + " ");
-               a = b;
-               b = nextNumber;
-           }
-       }
-   }
+   static int calculate(int a){
+        if(a<=0)
+            return 0;
+        
+        int fib[]=new int[a+1];
+        fib[0] = 0;
+        fib[1] = 1;
+        
+        int sum = fib[0]+fib[1];
+        for(int i=2; i<=a; i++){
+           fib[i] = fib[i-1]+fib[i-2];
+           sum += fib[i];
+        }
+        return sum;
+    }
 }
